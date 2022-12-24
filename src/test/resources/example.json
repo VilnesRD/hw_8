@@ -1,0 +1,11 @@
+{
+  "name": "Dmitry Rodichev",
+  "id": "21231123",
+  "age": 111,
+  "married": false,
+  "address": {
+    "street": "2170 Wakefield Street",
+    "city": "Philadelphia",
+    "country": "USA"
+  }
+}
