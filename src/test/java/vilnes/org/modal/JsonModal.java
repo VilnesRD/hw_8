@@ -1,6 +1,6 @@
 package vilnes.org.modal;
 
-public class jsonModal {
+public class JsonModal {
     public String name;
     public String id;
     public int age;

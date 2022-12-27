@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-import vilnes.org.modal.jsonModal;
+import vilnes.org.modal.JsonModal;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -24,7 +24,7 @@ public class FilesParsingTest {
     void zipFileTest() throws Exception {
         ClassLoader cl = FilesParsingTest.class.getClassLoader();
         {
-            try (InputStream resources = cl.getResourceAsStream("resources/dataFortest.zip");
+            try (InputStream resources = cl.getResourceAsStream("dataFortest.zip");
                  ZipInputStream zis = new ZipInputStream(resources)) {
                 ZipEntry entry;
                 while ((entry = zis.getNextEntry()) != null) {
@@ -49,16 +49,16 @@ public class FilesParsingTest {
         ClassLoader cl = FilesParsingTest.class.getClassLoader();
         ObjectMapper objectMapper = new ObjectMapper();
         try (
-                InputStream resource = cl.getResourceAsStream("resources/example.json")
+                InputStream resource = cl.getResourceAsStream("example.json")
         ) {
-            jsonModal jsonModal = objectMapper.readValue(resource, jsonModal.class);
-            assertThat(jsonModal.name).isEqualTo("Dmitry Rodichev");
-            assertThat(jsonModal.id).isEqualTo("21231123");
-            assertThat(jsonModal.age).isEqualTo(111);
-            assertThat(jsonModal.married).isFalse();
-            assertThat(jsonModal.address.street).isEqualTo("2170 Wakefield Street");
-            assertThat(jsonModal.address.city).isEqualTo("Philadelphia");
-            assertThat(jsonModal.address.country).isEqualTo("USA");
+            JsonModal JsonModal = objectMapper.readValue(resource, JsonModal.class);
+            assertThat(JsonModal.name).isEqualTo("Dmitry Rodichev");
+            assertThat(JsonModal.id).isEqualTo("21231123");
+            assertThat(JsonModal.age).isEqualTo(111);
+            assertThat(JsonModal.married).isFalse();
+            assertThat(JsonModal.address.street).isEqualTo("2170 Wakefield Street");
+            assertThat(JsonModal.address.city).isEqualTo("Philadelphia");
+            assertThat(JsonModal.address.country).isEqualTo("USA");
         }
     }
 }
